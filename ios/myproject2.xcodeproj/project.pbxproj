@@ -53,8 +53,6 @@
 		D354132256944E538FE3331B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFA9DDD678BE48499F5C6D42 /* SimpleLineIcons.ttf */; };
 		D5A78F2B9162496985F51DFA /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE9B702EAD724E8A9647AE8F /* FontAwesome5_Solid.ttf */; };
 		DADCF4A413234A53B045B223 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD085DD110DA4B138553194C /* MaterialIcons.ttf */; };
-		DFA32B608B2A4F07B844F55A /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 790C656FD5954F1EB00634EB /* libBVLinearGradient.a */; };
-		E41BE0F3477C4B3EAE0FDB49 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E88257443EAD468CA03AC43D /* libRNVectorIcons.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
@@ -425,8 +423,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				E41BE0F3477C4B3EAE0FDB49 /* libRNVectorIcons.a in Frameworks */,
-				DFA32B608B2A4F07B844F55A /* libBVLinearGradient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

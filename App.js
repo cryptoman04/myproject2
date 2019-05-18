@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { ButtonGroup } from "react-native-elements";
-// import Keypad from './components/Keypad';
+import Keypad from './components/Keypad';
 
 const SendButton = () => <Text>Hello</Text>;
 const AppButton = () => <Text>World</Text>;
@@ -21,7 +21,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <ButtonGroup buttons={buttons} />
-        {/* <Keypad color="green" /> */}
+        <Keypad color="green" />
       </View>
     );
   }
