@@ -20,20 +20,25 @@ import Keypad from "./components/Keypad";
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
+import Appstore from "./Appstore";
+import NavigationService from "./NavigationService";
+import Game from "./Game";
+
 const { width, height } = Dimensions.get("window");
 
 const SendButton = () => (
 	<Button
 		title="Send"
-		buttonStyle={{
-			// width: width / 3 - 20,
-			// height: 80,
-			// backgroundColor: "#6b52ad"
-		}}
+		buttonStyle={
+			{
+				// width: width / 3 - 20,
+				// height: 80,
+				// backgroundColor: "#6b52ad"
+			}
+		}
 		titleStyle={{
 			color: "white"
 		}}
-		onPress={() => onPress(item)}
 	/>
 );
 const AppButton = () => (
@@ -47,7 +52,7 @@ const AppButton = () => (
 		titleStyle={{
 			color: "white"
 		}}
-		onPress={() => onPress(item)}
+		onPress={() => NavigationService.navigate("Appstore")}
 	/>
 );
 
@@ -61,6 +66,10 @@ class SendView extends Component<Props> {
 	render() {
 		const buttons = [{ element: SendButton }, { element: AppButton }];
 		const { amount } = this.state;
+
+		// const { navigation } = this.props;
+
+		console.log("this.props", this.props);
 
 		return (
 			<View style={styles.container}>
@@ -93,23 +102,38 @@ class SendView extends Component<Props> {
 							})
 						}
 					/>
-					<ButtonGroup
+					{/* <ButtonGroup
 						buttons={buttons}
 						buttonStyle={{
 							height: 100,
-              backgroundColor: "#6b52ad",
-              borderColor: '#6b52ad',
-              borderWidth: 0
-            }}
-            innerBorderStyle={{
-              width: 0
-            }}
-            textStyle={{
-              color: "white"
-            }}
-            containerStyle={{
-              borderWidth: 0
-            }}
+							backgroundColor: "#6b52ad",
+							borderColor: "#6b52ad",
+							borderWidth: 0
+						}}
+						innerBorderStyle={{
+							width: 0
+						}}
+						textStyle={{
+							color: "white"
+						}}
+						containerStyle={{
+							borderWidth: 0
+						}}
+						// onPress={() => {
+						// 	// return navigation.navigate("Appstore");
+						// }}
+          /> */}
+					<Button
+						title="App Store"
+						buttonStyle={{
+							width: width / 3 - 20,
+							height: 80,
+							backgroundColor: "#6b52ad"
+						}}
+						titleStyle={{
+							color: "white"
+						}}
+						onPress={() => this.props.navigation.navigate("Appstore")}
 					/>
 				</View>
 			</View>
@@ -121,15 +145,21 @@ const AppNavigator = createStackNavigator(
 	{
 		SendView: {
 			screen: SendView
-		}
+		},
+		Appstore: {
+			screen: Appstore
+    },
+    Game: {
+      screen: Game
+    }
 	},
 	{
 		defaultNavigationOptions: {
 			headerTintColor: "#fff",
 			headerStyle: {
 				backgroundColor: "#6b52ad",
-        shadowColor: "transparent",
-        borderBottomWidth: 0
+				shadowColor: "transparent",
+				borderBottomWidth: 0
 			}
 		}
 	}
