@@ -11,6 +11,7 @@ import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import Keypad from "./components/Keypad";
 import provider from "./ethereum";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import transferFunds from "./components/CeleryPay";
 
 import Appstore from "./Appstore";
 import NavigationService from "./NavigationService";
