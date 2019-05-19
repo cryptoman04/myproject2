@@ -18,7 +18,8 @@ const Keypad = props => {
 				flexDirection: "row",
 				flexWrap: "wrap",
 				justifyContent: "center",
-				alignItems: "center"
+				alignItems: "center",
+				marginBottom: 20
 			}}
 		>
 			{items.map((item, i) => {
@@ -26,10 +27,16 @@ const Keypad = props => {
 					<Button
 						title={item || "0"}
 						key={i}
-						style={{
+						buttonStyle={{
 							width: width / 3 - 20,
-							height: 60
+							height: 60,
+							backgroundColor: "#6b52ad"
 						}}
+						titleStyle={{
+							fontWeight: 600,
+							fontSize: 22
+						}}
+						onPress={() => onPress(item)}
 					/>
 				);
 			})}

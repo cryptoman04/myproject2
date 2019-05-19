@@ -6,42 +6,153 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from "react";
+import {
+	Platform,
+	StyleSheet,
+	Text,
+	View,
+	Button,
+	Dimensions
+} from "react-native";
 import { ButtonGroup } from "react-native-elements";
-import Keypad from './components/Keypad';
+import Keypad from "./components/Keypad";
 
-const SendButton = () => <Text>Hello</Text>;
-const AppButton = () => <Text>World</Text>;
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    const buttons = [{ element: SendButton }, { element: AppButton }];
-    return (
-      <View style={styles.container}>
-        <ButtonGroup buttons={buttons} />
-        <Keypad color="green" />
-      </View>
-    );
-  }
+const { width, height } = Dimensions.get("window");
+
+const SendButton = () => (
+	<Button
+		title="Send"
+		buttonStyle={{
+			// width: width / 3 - 20,
+			// height: 80,
+			// backgroundColor: "#6b52ad"
+		}}
+		titleStyle={{
+			color: "white"
+		}}
+		onPress={() => onPress(item)}
+	/>
+);
+const AppButton = () => (
+	<Button
+		title="App Store"
+		buttonStyle={{
+			width: width / 3 - 20,
+			height: 80,
+			backgroundColor: "#6b52ad"
+		}}
+		titleStyle={{
+			color: "white"
+		}}
+		onPress={() => onPress(item)}
+	/>
+);
+
+class SendView extends Component<Props> {
+	static navigationOptions = {
+		title: "myproj2"
+	};
+	state = {
+		amount: 0
+	};
+	render() {
+		const buttons = [{ element: SendButton }, { element: AppButton }];
+		const { amount } = this.state;
+
+		return (
+			<View style={styles.container}>
+				<View
+					style={{
+						flex: 1,
+						alignItems: "center",
+						justifyContent: "center",
+						backgroundColor: "#6b52ad"
+					}}
+				>
+					<Text style={{ fontSize: 80, color: "white" }}>${amount}</Text>
+				</View>
+				<View
+					style={{
+						bottom: 0,
+						left: 0,
+						right: 0,
+						flex: 1,
+						backgroundColor: "#6B52AD"
+					}}
+				>
+					<Keypad
+						color="#6B52AD"
+						onPress={amount =>
+							this.setState({
+								amount:
+									String(this.state.amount === 0 ? "" : this.state.amount) +
+									String(amount)
+							})
+						}
+					/>
+					<ButtonGroup
+						buttons={buttons}
+						buttonStyle={{
+							height: 100,
+              backgroundColor: "#6b52ad",
+              borderColor: '#6b52ad',
+              borderWidth: 0
+            }}
+            innerBorderStyle={{
+              width: 0
+            }}
+            textStyle={{
+              color: "white"
+            }}
+            containerStyle={{
+              borderWidth: 0
+            }}
+					/>
+				</View>
+			</View>
+		);
+	}
 }
 
+const AppNavigator = createStackNavigator(
+	{
+		SendView: {
+			screen: SendView
+		}
+	},
+	{
+		defaultNavigationOptions: {
+			headerTintColor: "#fff",
+			headerStyle: {
+				backgroundColor: "#6b52ad",
+        shadowColor: "transparent",
+        borderBottomWidth: 0
+			}
+		}
+	}
+);
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+	container: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		backgroundColor: "#6B52AD",
+		paddingBottom: 30
+	},
+	welcome: {
+		fontSize: 20,
+		textAlign: "center",
+		margin: 10
+	},
+	instructions: {
+		textAlign: "center",
+		color: "#333333",
+		marginBottom: 5
+	}
 });
+
+export default createAppContainer(AppNavigator);
