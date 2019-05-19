@@ -94,20 +94,22 @@ class Appstore extends React.Component {
 											width: width - 40,
 											height: height * (3 / 5),
 											borderRadius: 8,
-											justifyContent: 'flex-end'
+											justifyContent: "flex-end"
 										}}
 									>
-										<Text
-											style={{
-												fontSize: 50,
-												color: "white",
-												fontWeight: "bold",
-												padding: 10
-												// alignSelf: 'flex-end',
-											}}
-										>
-											{item.item.title}
-										</Text>
+										<View style={{ bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0,0,0,0.4)' }}>
+											<Text
+												style={{
+													fontSize: 50,
+													color: "white",
+													fontWeight: "bold",
+													padding: 10
+													// alignSelf: 'flex-end',
+												}}
+											>
+												{item.item.title}
+											</Text>
+										</View>
 									</ImageBackground>
 								</View>
 							</TouchableWithoutFeedback>

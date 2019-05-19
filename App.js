@@ -11,7 +11,7 @@ import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import Keypad from "./components/Keypad";
 import provider from "./ethereum";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import transferFunds from "./components/CeleryPay";
+import { transferFunds, openChannel } from "./components/CeleryPay";
 
 import Appstore from "./Appstore";
 import NavigationService from "./NavigationService";
@@ -19,8 +19,6 @@ import Game from "./Game";
 import Onboarding from "./Onboarding";
 
 const { width, height } = Dimensions.get("window");
-
-console.log(provider, "*********" );
 
 const SendButton = () => (
 	<Button
@@ -59,6 +57,11 @@ class SendView extends Component<Props> {
 	state = {
 		amount: 0
 	};
+
+	componentWillMount() {
+		openChannel();
+	}
+
 	render() {
 		const buttons = [{ element: SendButton }, { element: AppButton }];
 		const { amount } = this.state;
@@ -98,39 +101,37 @@ class SendView extends Component<Props> {
 							})
 						}
 					/>
-					{/* <ButtonGroup
-						buttons={buttons}
-						buttonStyle={{
-							height: 100,
-							backgroundColor: "#6b52ad",
-							borderColor: "#6b52ad",
-							borderWidth: 0
-						}}
-						innerBorderStyle={{
-							width: 0
-						}}
-						textStyle={{
-							color: "white"
-						}}
-						containerStyle={{
-							borderWidth: 0
-						}}
-						// onPress={() => {
-						// 	// return navigation.navigate("Appstore");
-						// }}
-          /> */}
-					<Button
-						title="App Store"
-						buttonStyle={{
-							width: width / 3 - 20,
-							height: 80,
-							backgroundColor: "#6b52ad"
-						}}
-						titleStyle={{
-							color: "white"
-						}}
-						onPress={() => this.props.navigation.navigate("Appstore")}
-					/>
+
+					<View style={{ flexDirection: "row", left: 0, right: 0, bottom: 0, justifyContent: 'space-around' }}>
+						<Button
+							title="App Store"
+							buttonStyle={{
+								width: width / 3 - 20,
+								height: 80,
+                backgroundColor: "#6b52ad",
+                color: 'white'
+							}}
+							titleStyle={{
+								color: "white"
+							}}
+							onPress={() => this.props.navigation.navigate("Appstore")}
+						/>
+						<Button
+							title="Send"
+							buttonStyle={
+								{
+									// width: width / 3 - 20,
+									// height: 80,
+                  // backgroundColor: "#6b52ad"
+                  color:'white'
+								}
+							}
+							titleStyle={{
+								color: "white"
+              }}
+              onPress={transferFunds}
+						/>
+					</View>
 				</View>
 			</View>
 		);
