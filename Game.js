@@ -3,7 +3,14 @@ import { WebView } from "react-native";
 
 class Game extends React.Component {
 	render() {
-		return <WebView />
+		console.log("uri", this.props.navigation.state);
+		return (
+			<WebView
+				source={{
+					uri: this.props.navigation.state.params.gameURL
+				}}
+			/>
+		);
 	}
 }
 

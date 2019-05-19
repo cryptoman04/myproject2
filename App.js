@@ -7,24 +7,19 @@
  */
 
 import React, { Component } from "react";
-import {
-	Platform,
-	StyleSheet,
-	Text,
-	View,
-	Button,
-	Dimensions
-} from "react-native";
-import { ButtonGroup } from "react-native-elements";
+import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import Keypad from "./components/Keypad";
-
+import provider from "./ethereum";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import Appstore from "./Appstore";
 import NavigationService from "./NavigationService";
 import Game from "./Game";
+import Onboarding from "./Onboarding";
 
 const { width, height } = Dimensions.get("window");
+
+console.log(provider, "*********" );
 
 const SendButton = () => (
 	<Button
@@ -148,10 +143,13 @@ const AppNavigator = createStackNavigator(
 		},
 		Appstore: {
 			screen: Appstore
-    },
-    Game: {
-      screen: Game
-    }
+		},
+		Game: {
+			screen: Game
+		},
+		Onboarding: {
+			screen: Onboarding
+		}
 	},
 	{
 		defaultNavigationOptions: {
@@ -161,7 +159,8 @@ const AppNavigator = createStackNavigator(
 				shadowColor: "transparent",
 				borderBottomWidth: 0
 			}
-		}
+		},
+		initialRouteName: "SendView"
 	}
 );
 
